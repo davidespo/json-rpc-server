@@ -54,6 +54,7 @@ class RpcService {
   list() {
     return Object.values(this.methods).map((methodSpec) => {
       const ms = _.cloneDeep(methodSpec);
+      delete ms._state;
       delete ms.handle;
       return ms;
     });

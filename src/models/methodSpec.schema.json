@@ -3,6 +3,20 @@
   "properties": {
     "key": { "type": "string" },
     "description": { "type": "string" },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "package": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "input": {
       "type": "object"
     },
@@ -10,5 +24,5 @@
       "type": "object"
     }
   },
-  "required": ["key", "input", "output"]
+  "required": ["key", "dependencies", "input", "output"]
 }
