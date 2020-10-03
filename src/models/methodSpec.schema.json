@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "key": { "type": "string" },
+    "description": { "type": "string" },
+    "input": {
+      "type": "object"
+    },
+    "output": {
+      "type": "object"
+    }
+  },
+  "required": ["key", "input", "output"]
+}

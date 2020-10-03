@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const modelsService = require('./ModelsService.js').instance;
 
 /*
  * https://www.jsonrpc.org/specification
@@ -44,9 +45,8 @@ class RpcService {
   }
   register(methodSpec) {
     // TODO: validation
-    if (!!methodSpec && !!methodSpec.key) {
-      this.methods[methodSpec.key] = methodSpec;
-    }
+    modelsService.validateMethodSpec(methodSpec);
+    this.methods[methodSpec.key] = methodSpec;
   }
   remove(key) {
     delete this.methods[key];
@@ -59,9 +59,23 @@ class RpcService {
     });
   }
   async handle(req) {
+    try {
+      modelsService.validateRequest(req);
+    } catch (error) {
+      const invalidRequestError = _.cloneDeep(ERROR_INVALID_REQUEST);
+      invalidRequestError.data.validation = _.get(error, 'validation', null);
+      return withError(invalidRequestError, _.get(req, 'id'));
+    }
     const { method, params, id = null } = req;
     const methodSpec = this.methods[method];
     if (!!methodSpec) {
+      try {
+        modelsService.validate(methodSpec.input, params);
+      } catch (error) {
+        const invalidParamsError = _.cloneDeep(ERROR_INVALID_PARAMS);
+        invalidParamsError.data.validation = _.get(error, 'validation', null);
+        return withError(invalidParamsError, _.get(req, 'id'));
+      }
       try {
         const result = await methodSpec.handle(params);
         return toRes(result, id);

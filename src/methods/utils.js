@@ -7,12 +7,12 @@ const LOGGER_SPEC = {
   ],
   input: {
     type: 'object',
-    parameters: {
+    properties: {
       message: {
         type: ['string', 'null'],
       },
     },
-    required: ['message'],
+    requied: ['message'],
   },
   output: {
     type: null,
