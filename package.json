@@ -1,0 +1,17 @@
+{
+  "name": "json-rpc-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^6.12.5",
+    "lodash": "^4.17.20",
+    "nanoid": "^3.1.12"
+  }
+}
