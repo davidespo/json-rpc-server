@@ -1,0 +1,17 @@
+{
+  "name": "json-rpc-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "MODULES_DIR=/Users/davidesposito/workspace/oss/json-rpc-server/tmpsrc node src/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache 2",
+  "dependencies": {
+    "ajv": "^6.12.5",
+    "lodash": "^4.17.20",
+    "nanoid": "^3.1.12"
+  }
+}
