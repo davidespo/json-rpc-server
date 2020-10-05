@@ -18,7 +18,7 @@ const LOGGER_SPEC = {
   output: {
     type: null,
   },
-  handle({ message }) {
+  async handle({ message }) {
     console.log(message);
   },
 };

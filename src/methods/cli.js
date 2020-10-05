@@ -30,7 +30,7 @@ const EXEC_SPEC = {
       status: { type: 'string' },
     },
   },
-  handle({ command }) {
+  async handle({ command }) {
     const parts = command.split(/\s+/);
     const exe = spawnSync(parts[0], parts.slice(1));
 
